@@ -1,0 +1,73 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ControlAlmacen.ViewModels"
+             xmlns:suki="https://github.com/kikipoulet/SukiUI"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="viewModels:AltaComponenteViewModel"
+             x:Class="ControlAlmacen.Views.AltaComponenteView">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <viewModels:AltaComponenteViewModel />
+    </Design.DataContext>
+    <UserControl.DataContext>
+        <viewModels:AltaComponenteViewModel/>
+    </UserControl.DataContext>
+    
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto" Padding="20">
+        <Grid ColumnDefinitions="Auto, Auto" ColumnSpacing="10">
+            <!--Contenido de la columna 0-->
+            <StackPanel Grid.Column="0" >
+                <TextBlock Classes="h1" 
+                           Text="Nuevo producto"/>
+                <TextBlock Text="Añade un nuevo producto al catálogo"/>
+                
+                <suki:GlassCard IsInteractive="True" IsOpaque="False" Margin="0,20,0,0">
+                    <StackPanel Orientation="Horizontal" Spacing="15">
+                        <avalonia:MaterialIcon Kind="PackageVariant" Width="32"/>
+                        <TextBlock Classes="h3" Text="Información general"/>
+                    </StackPanel>
+                </suki:GlassCard>
+                
+            </StackPanel>
+            
+            <!--Contenido de la columna 1-->
+            <StackPanel Grid.Column="1">
+                <suki:GlassCard IsInteractive="True" IsOpaque="False" Margin="0,20,0,0">
+                    <StackPanel>
+                        <!--Encabezado-->
+                        <StackPanel Orientation="Horizontal" Spacing="15">
+                            <avalonia:MaterialIcon Kind="Image" Width="32"/>
+                            <TextBlock Classes="h3" Text="Imagen"/>
+                        </StackPanel>
+                        
+                        <TextBlock Text="Imagen principal del producto"/>
+                        
+                        <Border BorderThickness="1" Padding="40" Margin="10"
+                                BorderBrush="Gray" CornerRadius="10">
+                            <StackPanel HorizontalAlignment="Center">
+                                <avalonia:MaterialIcon Kind="ImageAdd" Width="40"/>
+                                <TextBlock Text="Sin imagen" TextAlignment="Center"/>
+                                <TextBlock Text="PNG, JPG O WEBP" TextAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                        <Button>
+                            <StackPanel Orientation="Horizontal">
+                                <avalonia:MaterialIcon Kind="Upload" />
+                                <TextBlock Text="Seleccionar imagen"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    
+                    
+                </suki:GlassCard>
+            </StackPanel>
+            
+        </Grid>
+    </ScrollViewer>
+    
+</UserControl>
