@@ -13,6 +13,7 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://AsyncImageLoader.Avalonia/AdvancedImage.axaml"/>
         <suki:SukiTheme ThemeColor="Blue" />
         <avalonia:MaterialIconStyles/>
     </Application.Styles>

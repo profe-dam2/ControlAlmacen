@@ -5,6 +5,7 @@
              xmlns:viewModels="clr-namespace:ControlAlmacen.ViewModels"
              xmlns:suki="https://github.com/kikipoulet/SukiUI"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="viewModels:AltaComponenteViewModel"
              x:Class="ControlAlmacen.Views.AltaComponenteView">
@@ -47,15 +48,22 @@
                         
                         <TextBlock Text="Imagen principal del producto"/>
                         
+                        <Image Stretch="UniformToFill"
+                                                        IsVisible="{Binding MostrarImagen}"
+                                                        Source="{Binding Imagen}"
+                                                        Width="100" Height="100"/>
+                        
                         <Border BorderThickness="1" Padding="40" Margin="10"
-                                BorderBrush="Gray" CornerRadius="10">
+                                BorderBrush="Gray" CornerRadius="10"
+                                IsVisible="{Binding !MostrarImagen}">
                             <StackPanel HorizontalAlignment="Center">
+                                
                                 <avalonia:MaterialIcon Kind="ImageAdd" Width="40"/>
                                 <TextBlock Text="Sin imagen" TextAlignment="Center"/>
                                 <TextBlock Text="PNG, JPG O WEBP" TextAlignment="Center"/>
                             </StackPanel>
                         </Border>
-                        <Button>
+                        <Button Command="{Binding SeleccionarImagenCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <avalonia:MaterialIcon Kind="Upload" />
                                 <TextBlock Text="Seleccionar imagen"/>
