@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -16,6 +17,13 @@ public partial class AltaComponenteViewModel : ViewModelBase
     [ObservableProperty] private Bitmap? _imagen;
 
     [RelayCommand]
+    public async Task ObtenerImagenes()
+    {
+        await _n8nService.ObtenerImagenes(Guid.Parse("2f8ba41e-de1e-4f30-84b8-fd9e3d8b5d6e"));
+    }
+    
+    
+    [RelayCommand]
     public async Task SeleccionarImagen()
     {
         var imagenPicker = await _filePickerService.SeleccionaImagen();
@@ -27,8 +35,8 @@ public partial class AltaComponenteViewModel : ViewModelBase
         MostrarImagen = true;
         await using var stream = await imagenPicker.OpenReadAsync();
         Imagen = new Bitmap(stream);
-
-        _n8nService.EnviarImagen(imagenPicker);
+        var uidproducto = Guid.Parse("2f8ba41e-de1e-4f30-84b8-fd9e3d8b5d6e");
+        _n8nService.EnviarImagen(imagenPicker,uidproducto);
 
 
     }

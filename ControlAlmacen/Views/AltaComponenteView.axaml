@@ -23,6 +23,8 @@
         <Grid ColumnDefinitions="Auto, Auto" ColumnSpacing="10">
             <!--Contenido de la columna 0-->
             <StackPanel Grid.Column="0" >
+                <asyncImageLoader:AdvancedImage Width="80" Height="80"
+                                                Source="http://192.168.29.12:11000/webhook/imagen?nombre=logo.png"/>
                 <TextBlock Classes="h1" 
                            Text="Nuevo producto"/>
                 <TextBlock Text="Añade un nuevo producto al catálogo"/>
@@ -31,6 +33,8 @@
                     <StackPanel Orientation="Horizontal" Spacing="15">
                         <avalonia:MaterialIcon Kind="PackageVariant" Width="32"/>
                         <TextBlock Classes="h3" Text="Información general"/>
+                        <Button Content="OBTENER IMAGENES" 
+                                Command="{Binding ObtenerImagenesCommand}"/>
                     </StackPanel>
                 </suki:GlassCard>
                 
